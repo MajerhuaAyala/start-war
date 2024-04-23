@@ -1,36 +1,24 @@
 import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
 
 @Entity("people")
-export class PeopleEntity{
+export class VehicleEntity {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column({nullable: false, type: "varchar"})
-    nombre: string
-
-    @Column({type: "number"})
-    peso: number
+    @Column({type: "varchar"})
+    nombre: string;
 
     @Column({type: "varchar"})
-    colorPelo: string
+    modelo: string;
 
-    @Column({ nullable: true })
-    colorPiel: string;
+    @Column({type: "varchar"})
+    fabricante: string;
 
-    @Column({ nullable: true })
-    colorOjo: string;
+    @Column({type: "number"})
+    costoCreditos: number;
 
-    @Column({ type: "date", nullable: true })
-    fechaNacimiento: Date;
-
-    @Column({ nullable: true })
-    genero: string;
-
-    @Column({ nullable: true })
-    planetaNatal: string;
-
-    @Column({ nullable: true })
-    especie: string;
+    @Column({type: "number"})
+    longitud: number;
 
     @CreateDateColumn()
     creado: Date;
