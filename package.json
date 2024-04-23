@@ -7,11 +7,12 @@
     "lint": "prettier --write src/**/*.ts",
     "prebuild": "prettier --write src/**/*.ts",
     "build": "tsc",
-    "start:local": "nodemon -e js  --exec \"AWS_PROFILE=iot2 serverless offline start --stage dev --region us-east-2\"",
-    "deploy:dev": "AWS_PROFILE=iot2 serverless deploy --stage dev --region us-east-2"
+    "start:local": "nodemon -e js  --exec \"AWS_PROFILE=majerhua serverless offline start --stage dev --region us-east-2\"",
+    "deploy:dev": "AWS_PROFILE=majerhua serverless deploy --stage dev --region us-east-2"
   },
   "keywords": [],
   "dependencies": {
+    "http-status": "^1.7.4",
     "joi": "^17.12.2",
     "lambda-api": "^1.0.3",
     "mysql2": "^3.9.7",

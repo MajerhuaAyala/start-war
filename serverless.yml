@@ -1,0 +1,65 @@
+service: start-war-api
+app: start-war-api-project
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage}
+  environment: ${file(env.${opt:stage, self:provider.stage}.json)}
+  apiGateway:
+    shouldStartNameWithService: true
+  region: ${opt:region}
+
+package:
+  exclude:
+    - scripts/**
+    - node_modules/**
+    - layers/**
+    - package.json
+    - package-lock.json
+    - "*.md"
+    - "env.*"
+    - scannerwork/
+    - sonar-project.properties
+    - test/**
+    - src/**
+    - Dockerfile
+
+layers:
+  StartWarLayer:
+    name: ${self:service}-${self:provider.stage}-dependencies
+    path: layers
+    description: "START-WAR-SOS-API"
+    compatibleRuntimes:
+      - nodejs20.x
+    package:
+      exclude:
+        - "!nodejs/node_modules/**"
+
+functions:
+  main:
+    handler: dist/src/shared/infrastructure/lambda/main.handler
+    timeout: 30
+    memorySize: 256
+    architecture: arm64
+    layers:
+      - { Ref: StartWarLayerLambdaLayer }
+    events:
+      - http:
+          path: /{proxy+}
+          method: any
+          cors:
+            origin: "*"
+            headers: # <-- Specify allowed headers
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Amz-Security-Token
+            allowCredentials: false
+          authorizer:
+            type: aws_iam
+
+plugins:
+  - serverless-offline

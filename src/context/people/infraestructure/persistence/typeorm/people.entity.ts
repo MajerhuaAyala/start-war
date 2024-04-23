@@ -1,58 +1,58 @@
 import {
-    Column,
-    CreateDateColumn,
-    Entity,
-    JoinTable,
-    ManyToMany,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from "typeorm";
-import {FilmEntity} from "../../../../film/infraestructure/persistence/typeorm/film.entity";
-import {VehicleEntity} from "../../../../vehicle/infraestructure/persistence/typeorm/vehicle.entity";
+import { FilmEntity } from "../../../../film/infrastructure/persistence/typeorm/film.entity";
+import { VehicleEntity } from "../../../../vehicle/infraestructure/persistence/typeorm/vehicle.entity";
 
 @Entity("people")
-export class PeopleEntity{
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+export class PeopleEntity {
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column({nullable: false, type: "varchar"})
-    nombre: string
+  @Column({ nullable: false, type: "varchar" })
+  nombre: string;
 
-    @Column({type: "number"})
-    peso: number
+  @Column({ type: "number" })
+  peso: number;
 
-    @Column({type: "varchar"})
-    colorPelo: string
+  @Column({ type: "varchar" })
+  colorPelo: string;
 
-    @Column({ nullable: true })
-    colorPiel: string;
+  @Column({ nullable: true })
+  colorPiel: string;
 
-    @Column({ nullable: true })
-    colorOjo: string;
+  @Column({ nullable: true })
+  colorOjo: string;
 
-    @Column({ type: "date", nullable: true })
-    fechaNacimiento: Date;
+  @Column({ type: "date", nullable: true })
+  fechaNacimiento: Date;
 
-    @Column({ nullable: true })
-    genero: string;
+  @Column({ nullable: true })
+  genero: string;
 
-    @Column({ nullable: true })
-    planetaNatal: string;
+  @Column({ nullable: true })
+  planetaNatal: string;
 
-    @Column({ nullable: true })
-    especie: string;
+  @Column({ nullable: true })
+  especie: string;
 
-    @CreateDateColumn()
-    creado: Date;
+  @CreateDateColumn()
+  creado: Date;
 
-    @UpdateDateColumn()
-    editado: Date;
+  @UpdateDateColumn()
+  editado: Date;
 
-    @ManyToMany(() => FilmEntity)
-    @JoinTable()
-    films: FilmEntity[];
+  @ManyToMany(() => FilmEntity)
+  @JoinTable()
+  films: FilmEntity[];
 
-    @ManyToMany(() => VehicleEntity)
-    @JoinTable()
-    vehicles: VehicleEntity[];
+  @ManyToMany(() => VehicleEntity)
+  @JoinTable()
+  vehicles: VehicleEntity[];
 }
