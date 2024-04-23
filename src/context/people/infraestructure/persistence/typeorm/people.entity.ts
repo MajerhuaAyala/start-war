@@ -1,4 +1,14 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinTable,
+    ManyToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from "typeorm";
+import {FilmEntity} from "../../../../film/infraestructure/persistence/typeorm/film.entity";
+import {VehicleEntity} from "../../../../vehicle/infraestructure/persistence/typeorm/vehicle.entity";
 
 @Entity("people")
 export class PeopleEntity{
@@ -37,4 +47,13 @@ export class PeopleEntity{
 
     @UpdateDateColumn()
     editado: Date;
+
+    @ManyToMany(() => FilmEntity)
+    @JoinTable()
+    films: FilmEntity[];
+
+    @ManyToMany(() => VehicleEntity)
+    @JoinTable()
+    vehicles: VehicleEntity[];
+
 }
