@@ -3,6 +3,8 @@ import { TypeOrmFilmRepository } from "../persistence/TypeOrmFilmRepository";
 import { TypeOrmClientFactory } from "../../../../shared/infrastructure/persistence/typeorm/type-orm-client-factory";
 import { TypeOrmConfigFactory } from "../../../shared/infrastructure/persistence/typeorm/type-orm-config-factory";
 import { FilmCreator } from "../../application/create/FilmCreator";
+import { ApiResponse } from "../../../../shared/infrastructure/api-response";
+import { STATUS_CODE } from "../../../../shared/domain/type-error";
 
 export const createFilm = async (req: Request, res: Response) => {
   try {
@@ -10,9 +12,33 @@ export const createFilm = async (req: Request, res: Response) => {
       TypeOrmClientFactory.createClient(TypeOrmConfigFactory.createConfig()),
     );
     const filmCreator = new FilmCreator(filmRepository);
-    return filmCreator.run(req.body);
+    const response = await filmCreator.run(req.body);
+
+    return response.fold(
+      (error) => {
+        return ApiResponse.builder()
+          .setStatusCode(error.status)
+          .setObjectBody(error.message)
+          .setResponseApi(res)
+          .build()
+          .getResponse();
+      },
+      (response) =>
+        ApiResponse.builder()
+          .setStatusCode(STATUS_CODE.OK)
+          .setObjectBody(response)
+          .setResponseApi(res)
+          .build()
+          .getResponse(),
+    );
   } catch (error) {
-    console.error(error);
-    throw new Error("salio mal");
+    console.error(`${createFilm.name}: `, error);
+    return (
+      ApiResponse.builder()
+        .setStatusCode(STATUS_CODE.INTERNAL_SERVER_ERROR)
+        // @ts-ignore
+        .setObjectBody(e.message)
+        .build()
+    );
   }
 };

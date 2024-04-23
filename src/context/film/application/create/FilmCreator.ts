@@ -5,6 +5,8 @@ import { FilmTitle } from "../../domain/FilmTitle";
 import { FilmEpisode } from "../../domain/FilmEpisode";
 import { FilmOpeningCrawl } from "../../domain/FilmOpeningCrawl";
 import { FilmDirector } from "../../domain/FilmDirector";
+import { Either } from "../../../../shared/domain/either";
+import { ApiError } from "../../../../shared/domain/type-error";
 
 export class FilmCreator {
   constructor(private readonly filmRepository: FilmRepository) {}
@@ -15,7 +17,7 @@ export class FilmCreator {
     episodio: number;
     apertura: string;
     director: string;
-  }): Promise<Film> {
+  }): Promise<Either<ApiError, Film>> {
     const newFilm = new Film(
       new FilmId(params.id),
       new FilmTitle(params.titulo),
@@ -23,6 +25,8 @@ export class FilmCreator {
       new FilmOpeningCrawl(params.apertura),
       new FilmDirector(params.director),
     );
-    return this.filmRepository.create(newFilm);
+
+    const response = await this.filmRepository.create(newFilm);
+    return Either.right(response);
   }
 }
