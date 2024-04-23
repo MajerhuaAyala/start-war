@@ -15,7 +15,7 @@ export class TypeOrmClientFactory {
         __dirname +
           "/../../../../context/**/infrastructure/persistence/typeorm/*{.js,.ts}",
       ],
-      synchronize: true,
+      synchronize: false,
       logging: false,
     });
     return connection.initialize();
