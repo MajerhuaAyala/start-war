@@ -1,18 +1,23 @@
-import { Request, Response } from "lambda-api";
 import { TypeOrmFilmRepository } from "../persistence/TypeOrmFilmRepository";
 import { TypeOrmClientFactory } from "../../../../shared/infrastructure/persistence/typeorm/type-orm-client-factory";
 import { TypeOrmConfigFactory } from "../../../shared/infrastructure/persistence/typeorm/type-orm-config-factory";
-import { FilmCreator } from "../../application/create/FilmCreator";
 import { ApiResponse } from "../../../../shared/infrastructure/api-response";
 import { STATUS_CODE } from "../../../../shared/domain/type-error";
+import { FilmFilter } from "../../application/get/FilmFilter";
+import { Request, Response } from "lambda-api";
+import { PaginateDto } from "../../domain/adapter/paginate.dto";
 
-export const createFilm = async (req: Request, res: Response) => {
+export const filterFilmController = async (req: Request, res: Response) => {
   try {
+    const { page, perPage, query } = req.query as PaginateDto;
+
     const filmRepository = new TypeOrmFilmRepository(
       TypeOrmClientFactory.createClient(TypeOrmConfigFactory.createConfig()),
     );
-    const filmCreator = new FilmCreator(filmRepository);
-    const response = await filmCreator.run(req.body);
+
+    const filmFilter = new FilmFilter(filmRepository);
+
+    const response = await filmFilter.run({ page, perPage, query });
 
     return response.fold(
       (error) => {
@@ -32,7 +37,7 @@ export const createFilm = async (req: Request, res: Response) => {
           .getResponse(),
     );
   } catch (error) {
-    console.error(`${createFilm.name}: `, error);
+    console.error(`${filterFilmController.name}: `, error);
     return (
       ApiResponse.builder()
         .setStatusCode(STATUS_CODE.INTERNAL_SERVER_ERROR)

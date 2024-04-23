@@ -1,5 +1,5 @@
 import lambdaApi, { API, NextFunction, Request, Response } from "lambda-api";
-import filmRoutes from "../../../context/film/infrastructure/persistence/FilmRoutes";
+import filmRoutes from "../../../context/film/infrastructure/FilmRoutes";
 import { FORBIDDEN, INTERNAL_SERVER_ERROR, OK } from "http-status";
 
 export class Server {
