@@ -55,5 +55,4 @@ export class PeopleEntity{
     @ManyToMany(() => VehicleEntity)
     @JoinTable()
     vehicles: VehicleEntity[];
-
 }
