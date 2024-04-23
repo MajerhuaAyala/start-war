@@ -3,7 +3,6 @@ import { TypeOrmConfig } from "./type-orm-config";
 
 export class TypeOrmClientFactory {
   static async createClient(config: TypeOrmConfig): Promise<DataSource> {
-    console.log({ config });
     const connection = new DataSource({
       type: "mysql",
       host: config.host,

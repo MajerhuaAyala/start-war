@@ -17,6 +17,11 @@ export class FilmEntity {
   @Column({ type: "int" })
   episodio: number;
 
+  @Column({ type: "varchar" })
+  apertura: string;
+
+  @Column({ type: "varchar" })
+  director: string;
   @CreateDateColumn()
   creado: Date;
 

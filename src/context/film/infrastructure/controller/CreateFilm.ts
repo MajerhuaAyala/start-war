@@ -17,6 +17,8 @@ export class CreateFilm {
         id: `${Date.now()}`,
         episodio: 1,
         titulo: "titulo generico",
+        apertura: "erase una vez",
+        director: "Juanquin finix",
       });
     } catch (error) {
       console.error(error);
