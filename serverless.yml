@@ -4,7 +4,7 @@ frameworkVersion: "3"
 
 provider:
   name: aws
-  runtime: nodejs20.x
+  runtime: nodejs18.x
   lambdaHashingVersion: 20201221
   stage: ${opt:stage}
   environment: ${file(env.${opt:stage, self:provider.stage}.json)}
@@ -33,7 +33,7 @@ layers:
     path: layers
     description: "START-WAR-SOS-API"
     compatibleRuntimes:
-      - nodejs20.x
+      - nodejs18.x
     package:
       exclude:
         - "!nodejs/node_modules/**"
