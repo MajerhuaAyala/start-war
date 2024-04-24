@@ -6,7 +6,7 @@ export class FilmEpisodeMother {
     return new FilmEpisode(value)
   }
 
-  static random(): FilmEpisodeMother {
+  static random(): FilmEpisode {
     const episodeRandom = MotherCreator.random().number.int({min: 1, max: 10})
     return this.create(episodeRandom)
   }

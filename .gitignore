@@ -12,6 +12,7 @@ data
 /data/
 src/shared/domain/config-firebase.ts
 Dockerfile
+.tmp
 
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,serverless,webstorm,intellij
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,node,serverless,webstorm,intellij

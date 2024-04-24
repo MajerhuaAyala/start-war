@@ -26,6 +26,7 @@ package:
     - test/**
     - src/**
     - Dockerfile
+    - .tmp/**
 
 layers:
   StartWarLayer:

@@ -24,6 +24,7 @@ export class FilmRepositoryMock implements FilmRepository {
 
   async create(film: Film): Promise<Film> {
     this.createMock(film)
+    this.film = film
     return this.film
   }
 
@@ -39,5 +40,17 @@ export class FilmRepositoryMock implements FilmRepository {
   async findById(id: FilmId): Promise<Optional<Film>> {
     this.findByIdMock(id)
     return this.optionaFilm
+  }
+
+  returnOnFindById(film: Film) {
+    this.optionaFilm = Optional.of(film)
+  }
+
+  returnOnFindByIdEmpty() {
+    this.optionaFilm = Optional.empty()
+  }
+
+  assertSaveHaveBeenCalledWith(expected: Film): void {
+    expect(this.createMock).toHaveBeenCalledWith(expected)
   }
 }

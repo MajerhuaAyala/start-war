@@ -6,7 +6,7 @@ export class FilmOpeningCrawlMother {
     return new FilmOpeningCrawl(value)
   }
 
-  static random(): FilmOpeningCrawlMother {
+  static random(): FilmOpeningCrawl {
     const randomOpening = MotherCreator.random().lorem.paragraphs({min: 2, max: 5})
     return this.create(randomOpening)
   }

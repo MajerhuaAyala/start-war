@@ -6,7 +6,7 @@ export class FilmIdMother {
     return new FilmId(value)
   }
 
-  static random(): FilmIdMother {
+  static random(): FilmId {
     const randomUuid = MotherCreator.random().string.uuid()
     return this.create(randomUuid)
   }

@@ -6,7 +6,7 @@ export class FilmTitleMother {
     return new FilmTitle(value)
   }
 
-  static random(): FilmTitleMother {
+  static random(): FilmTitle {
     const randomTitle = MotherCreator.random().music.songName()
     return this.create(randomTitle)
   }
