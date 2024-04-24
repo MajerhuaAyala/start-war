@@ -50,7 +50,7 @@ custom:
     #apiKeyHeaders: ['Authorization']
     useStage: false
     #basePath: '/dev'
-    #host: 'localhost:3001'
+    host: 'localhost:3000/dev'
     schemes: ['http', 'https']
     excludeStages: ['production']
     useRedirectUI: false
@@ -65,8 +65,8 @@ functions:
       - { Ref: StartWarLayerLambdaLayer }
     events:
       - http:
-          path: /film
-          method: get
+          path: /{proxy+}
+          method: any
           cors:
             origin: "*"
             headers: # <-- Specify allowed headers

@@ -6,53 +6,87 @@
     "version": "1"
   },
   "paths": {
-    "/users": {
+    "/films/paginate": {
       "get": {
-        "summary": "Get all users",
+        "description": "Lista las peliculas que coinciden con la query de la busqueda",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Valor de la búsqueda",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número de página",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "Número de resultados por página",
+            "required": true,
+            "type": "integer"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful operation",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/User"
+                "$ref": "#/definitions/Film"
               }
             }
           }
         }
-      },
+      }
+    },
+    "/films/create": {
       "post": {
-        "summary": "Create a new user",
+        "summary": "Crea una película",
         "parameters": [
           {
-            "name": "user",
+            "name": "film",
             "in": "body",
-            "description": "User object that needs to be added",
+            "description": "Objet de Pelílula que se debe añadir",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Film"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful operation"
+            "description": "La pelicula ha sido creado"
           }
         }
       }
     },
-    "/film": {
-      "get": {
+    "/{proxy+}": {
+      "any": {
         "summary": "main",
         "description": "",
-        "operationId": "main.get./film",
+        "operationId": "main.any./{proxy+}",
         "consumes": [
           "application/json"
         ],
         "produces": [
           "application/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "proxy+",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "200 response"
@@ -62,27 +96,39 @@
     }
   },
   "definitions": {
-    "User": {
+    "Film": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "integer"
+          "type": "string",
+          "format": "uuid"
         },
-        "username": {
+        "titulo": {
           "type": "string"
         },
-        "email": {
-          "type": "string",
-          "format": "email"
+        "episodio": {
+          "type": "number"
+        },
+        "apertura": {
+          "type": "string"
+        },
+        "director": {
+          "type": "string"
+        },
+        "creado": {
+          "type": "date"
+        },
+        "editado": {
+          "type": "date"
         }
       },
       "required": [
-        "id",
-        "username"
+        "id"
       ]
     }
   },
   "securityDefinitions": {},
+  "host": "localhost:3000/dev",
   "schemes": [
     "http",
     "https"

@@ -3,7 +3,8 @@
     "lint": "prettier --write src/**/*.ts",
     "prebuild": "prettier --write src/**/*.ts",
     "build": "tsc",
-    "start:local": "nodemon -e js  --exec \"AWS_PROFILE=majerhua serverless offline start --stage dev --region us-east-2\"",
+    "start:local:demon": "nodemon -e js  --exec \"AWS_PROFILE=majerhua serverless offline start --stage dev --region us-east-2\"",
+    "start:local": "AWS_PROFILE=majerhua serverless offline start --stage dev --region us-east-2",
     "deploy:dev": "AWS_PROFILE=majerhua serverless deploy --stage dev --region us-east-2",
     "docs": "sls generate-swagger --stage dev --region us-east-2"
   },

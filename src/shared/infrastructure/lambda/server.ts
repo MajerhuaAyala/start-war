@@ -14,7 +14,7 @@ export class Server {
 
   private setRoutes() {
     this.app.register(filmRoutes, {
-      prefix: "/film",
+      prefix: "/films",
     });
 
     this.app.use(
