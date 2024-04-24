@@ -15,13 +15,17 @@ export class FilmFilter {
   async run(
     criteria: PaginateDto,
   ): Promise<Either<ApiError, ResponsePaginateFilm>> {
-    const response = await this.filmRepository.filter(criteria);
+    let response = await this.filmRepository.filter(criteria);
 
-    if (criteria.query) {
+    if (criteria.query && response.data.length === 0) {
       const responseExternal = await this.filmExternalRepository.findByTitle(
         new FilmTitle(criteria.query),
       );
-      console.log({ responseExternal });
+
+      if (responseExternal.length > 0) {
+        await this.filmRepository.createBulk(responseExternal);
+        response = await this.filmRepository.filter(criteria);
+      }
     }
 
     return Either.right(response);

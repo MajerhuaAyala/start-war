@@ -87,4 +87,15 @@ export class TypeOrmFilmRepository
       throw new Error("Error en la base de datos");
     }
   }
+
+  async createBulk(films: Film[]): Promise<void> {
+    const bodyToSave = films.map((film) => film.toPrimitive());
+
+    try {
+      await (await this.repository(FilmEntity)).save(bodyToSave);
+    } catch (error) {
+      console.error(error);
+      throw new Error("Error en la base de datos");
+    }
+  }
 }

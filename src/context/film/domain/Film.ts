@@ -3,6 +3,15 @@ import { FilmTitle } from "./FilmTitle";
 import { FilmEpisode } from "./FilmEpisode";
 import { FilmOpeningCrawl } from "./FilmOpeningCrawl";
 import { FilmDirector } from "./FilmDirector";
+import { v4 as uuidv4 } from "uuid";
+
+interface FilmPrimitive {
+  id?: string;
+  titulo: string;
+  episodio: number;
+  apertura: string;
+  director: string;
+}
 
 export class Film {
   id: FilmId;
@@ -42,7 +51,17 @@ export class Film {
     );
   }
 
+  toPrimitive(): FilmPrimitive {
+    return {
+      id: this.id.value,
+      apertura: this.apertura.value,
+      director: this.director.value,
+      episodio: this.episodio.value,
+      titulo: this.titulo.value,
+    };
+  }
+
   static generateRandomId() {
-    return `film-${Date.now()}`;
+    return uuidv4();
   }
 }
