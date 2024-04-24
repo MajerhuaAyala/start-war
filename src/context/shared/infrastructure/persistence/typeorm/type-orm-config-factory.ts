@@ -1,4 +1,4 @@
-import { TypeOrmConfig } from "../../../../../shared/infrastructure/persistence/typeorm/type-orm-config";
+import { TypeOrmConfig } from "../../../../../shared/infrastructure/persistence/typeorm/TypeOrmConfig";
 import {
   DATABASE_HOST,
   DATABASE_NAME,

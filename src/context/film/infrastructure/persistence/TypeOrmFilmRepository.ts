@@ -1,4 +1,4 @@
-import { TypeOrmRepository } from "../../../../shared/infrastructure/persistence/typeorm/type-orm-repository";
+import { TypeOrmRepository } from "../../../../shared/infrastructure/persistence/typeorm/TypeOrmRepository";
 import { FilmEntity } from "./typeorm/film.entity";
 import { FilmRepository } from "../../domain/FilmRepository";
 import { Film } from "../../domain/Film";

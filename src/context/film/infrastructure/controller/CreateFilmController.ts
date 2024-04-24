@@ -1,6 +1,6 @@
 import { Request, Response } from "lambda-api";
 import { TypeOrmFilmRepository } from "../persistence/TypeOrmFilmRepository";
-import { TypeOrmClientFactory } from "../../../../shared/infrastructure/persistence/typeorm/type-orm-client-factory";
+import { TypeOrmClientFactory } from "../../../../shared/infrastructure/persistence/typeorm/TypeOrmClientFactory";
 import { TypeOrmConfigFactory } from "../../../shared/infrastructure/persistence/typeorm/type-orm-config-factory";
 import { FilmCreator } from "../../application/create/FilmCreator";
 import { ApiResponse } from "../../../../shared/infrastructure/api-response";

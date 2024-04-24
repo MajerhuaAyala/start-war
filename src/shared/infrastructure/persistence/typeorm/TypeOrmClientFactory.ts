@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { TypeOrmConfig } from "./type-orm-config";
+import { TypeOrmConfig } from "./TypeOrmConfig";
 
 export class TypeOrmClientFactory {
   static async createClient(config: TypeOrmConfig): Promise<DataSource> {
