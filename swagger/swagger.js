@@ -138,7 +138,7 @@
     }
   },
   "securityDefinitions": {},
-  "host": "localhost:3000/dev",
+  "basePath": "/dev",
   "schemes": [
     "http",
     "https"

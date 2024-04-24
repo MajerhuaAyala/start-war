@@ -49,8 +49,8 @@ custom:
     swaggerPath: 'swagger'
     #apiKeyHeaders: ['Authorization']
     useStage: false
-    #basePath: '/dev'
-    host: 'localhost:3000/dev'
+    basePath: '/dev'
+    #host: 'localhost:3000/dev'
     schemes: ['http', 'https']
     excludeStages: ['production']
     useRedirectUI: false
@@ -75,8 +75,6 @@ functions:
               - Authorization
               - X-Amz-Security-Token
             allowCredentials: false
-          authorizer:
-            type: aws_iam
 
 plugins:
   - serverless-auto-swagger

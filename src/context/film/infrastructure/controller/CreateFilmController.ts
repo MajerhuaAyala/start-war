@@ -14,7 +14,7 @@ export const createFilmController = async (req: Request, res: Response) => {
     const filmCreator = new FilmCreator(filmRepository);
     const response = await filmCreator.run(req.body);
 
-    await filmRepository.close()
+    await filmRepository.close();
 
     return response.fold(
       (error) => {
