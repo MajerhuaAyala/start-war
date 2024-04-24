@@ -7,6 +7,10 @@ export abstract class TypeOrmRepository<J extends ObjectLiteral> {
     return this._cliente;
   }
 
+  async close() {
+    await (await this._cliente).destroy();
+  }
+
   protected async repository(entity: any): Promise<Repository<J>> {
     return (await this._cliente).getRepository(entity);
   }

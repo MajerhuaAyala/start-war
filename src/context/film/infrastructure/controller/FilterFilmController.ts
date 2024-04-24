@@ -26,6 +26,8 @@ export const filterFilmController = async (req: Request, res: Response) => {
 
     const response = await filmFilter.run({ page, perPage, query });
 
+    await filmRepository.close();
+
     return response.fold(
       (error) => {
         return ApiResponse.builder()
