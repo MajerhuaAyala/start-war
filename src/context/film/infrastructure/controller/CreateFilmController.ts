@@ -39,7 +39,7 @@ export const createFilmController = async (req: Request, res: Response) => {
       ApiResponse.builder()
         .setStatusCode(STATUS_CODE.INTERNAL_SERVER_ERROR)
         // @ts-ignore
-        .setObjectBody(e.message)
+        .setObjectBody(error.message)
         .build()
     );
   }

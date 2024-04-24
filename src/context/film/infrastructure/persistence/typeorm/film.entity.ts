@@ -17,7 +17,7 @@ export class FilmEntity {
   @Column({ type: "int" })
   episodio: number;
 
-  @Column({ type: "longtext" })
+  @Column({ type: "longtext", nullable: true })
   apertura: string;
 
   @Column({ type: "varchar" })
