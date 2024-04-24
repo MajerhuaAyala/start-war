@@ -27,6 +27,7 @@ package:
     - src/**
     - Dockerfile
     - .tmp/**
+    - coverag/**
 
 layers:
   StartWarLayer:
@@ -45,15 +46,15 @@ custom:
     title: 'Api de Start War'
     apiType: 'http'
     generateSwaggerOnDeploy: true
-    swaggerFiles: ['./doc/films.json']
-    typefiles: ["./doc/types/api-types.d.ts"]
+    swaggerFiles: [ './doc/films.json' ]
+    typefiles: [ "./doc/types/api-types.d.ts" ]
     swaggerPath: 'swagger'
     #apiKeyHeaders: ['Authorization']
     useStage: false
     basePath: '/dev'
     #host: 'localhost:3000/dev'
-    schemes: ['http', 'https']
-    excludeStages: ['production']
+    schemes: [ 'http', 'https' ]
+    excludeStages: [ 'production' ]
     useRedirectUI: false
 
 functions:
