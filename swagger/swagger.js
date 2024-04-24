@@ -8,6 +8,7 @@
   "paths": {
     "/films/paginate": {
       "get": {
+        "summary": "End para paginar peliculas",
         "description": "Lista las peliculas que coinciden con la query de la busqueda",
         "produces": [
           "application/json"
@@ -17,20 +18,20 @@
             "name": "query",
             "in": "query",
             "description": "Valor de la búsqueda",
-            "required": true
+            "required": false
           },
           {
             "name": "page",
             "in": "query",
             "description": "Número de página",
-            "required": true,
+            "required": false,
             "type": "integer"
           },
           {
             "name": "perPage",
             "in": "query",
             "description": "Número de resultados por página",
-            "required": true,
+            "required": false,
             "type": "integer"
           }
         ],
@@ -54,7 +55,7 @@
           {
             "name": "film",
             "in": "body",
-            "description": "Objet de Pelílula que se debe añadir",
+            "description": "Objeto de Pelílula que se debe añadir",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Film"
@@ -101,19 +102,25 @@
       "properties": {
         "id": {
           "type": "string",
-          "format": "uuid"
+          "format": "uuid",
+          "uniqueItems": true,
+          "example": "123e4567-e89b-12d3-a456-426614174000"
         },
         "titulo": {
-          "type": "string"
+          "type": "string",
+          "example": "Star Wars: Episodio IV - Una nueva esperanza"
         },
         "episodio": {
-          "type": "number"
+          "type": "number",
+          "example": 4
         },
         "apertura": {
-          "type": "string"
+          "type": "string",
+          "example": "Hace mucho tiempo en una galaxia muy, muy lejana..."
         },
         "director": {
-          "type": "string"
+          "type": "string",
+          "example": "George Lucas"
         },
         "creado": {
           "type": "date"
@@ -123,7 +130,10 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "titulo",
+        "episodio",
+        "director"
       ]
     }
   },
