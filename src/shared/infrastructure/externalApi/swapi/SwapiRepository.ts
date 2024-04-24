@@ -1,15 +1,13 @@
-import {AxiosInstance} from "axios";
+import { AxiosInstance } from "axios";
 
 export class SwapiRepository {
-  constructor(private _client: AxiosInstance) {
-
-  }
+  constructor(private _client: AxiosInstance) {}
 
   protected client(): AxiosInstance {
-    return this._client
+    return this._client;
   }
 
   protected async filterBy(search: string) {
-    return await this._client.get(`/?search=${search}`)
+    return await this.client().get(`/?search=${search}`);
   }
 }

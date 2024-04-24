@@ -1,6 +1,6 @@
-import {FilmTitle} from "./FilmTitle";
-import {Film} from "./Film";
+import { FilmTitle } from "./FilmTitle";
+import { Film } from "./Film";
 
 export interface FilmExternalApiRepository {
-  findByTitle(name: FilmTitle): Promise<Film[] | []>
+  findByTitle(name: FilmTitle): Promise<Film[] | []>;
 }

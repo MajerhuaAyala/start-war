@@ -1,23 +1,21 @@
-import {SwapiConfig} from "./SwapiConfig";
-import axios, {AxiosInstance} from "axios"
+import { SwapiConfig } from "./SwapiConfig";
+import axios, { AxiosInstance } from "axios";
 
 export class SwapiClientFactory {
-  private static instance: AxiosInstance
+  private static instance: AxiosInstance;
 
   static createClient(config: SwapiConfig): AxiosInstance {
     try {
-
       if (!SwapiClientFactory.instance) {
         SwapiClientFactory.instance = axios.create({
-          baseURL: config.url
-        })
+          baseURL: config.url,
+        });
       }
 
-      return SwapiClientFactory.instance
-
+      return SwapiClientFactory.instance;
     } catch (e) {
-      console.log(">Error Axios: ", e)
-      throw new Error("Internar error")
+      console.log(">Error Axios: ", e);
+      throw new Error("Internar error");
     }
   }
 }

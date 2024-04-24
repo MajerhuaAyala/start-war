@@ -1,3 +1,3 @@
 export interface SwapiConfig {
-  url: string
+  url: string;
 }
