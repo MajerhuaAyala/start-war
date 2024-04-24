@@ -22,6 +22,10 @@ export class FilmEntity {
 
   @Column({ type: "varchar" })
   director: string;
+
+  @Column({ type: "array" })
+  especies: string[];
+
   @CreateDateColumn()
   creado: Date;
 

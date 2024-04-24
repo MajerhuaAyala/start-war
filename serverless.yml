@@ -38,6 +38,23 @@ layers:
       exclude:
         - "!nodejs/node_modules/**"
 
+
+custom:
+  autoswagger:
+    title: 'Api de Start War'
+    apiType: 'http'
+    generateSwaggerOnDeploy: true
+    swaggerFiles: ['./doc/films.json']
+    typefiles: ["./doc/types/api-types.d.ts"]
+    swaggerPath: 'swagger'
+    #apiKeyHeaders: ['Authorization']
+    useStage: false
+    #basePath: '/dev'
+    #host: 'localhost:3001'
+    schemes: ['http', 'https']
+    excludeStages: ['production']
+    useRedirectUI: false
+
 functions:
   main:
     handler: dist/src/shared/infrastructure/lambda/main.handler
@@ -48,8 +65,8 @@ functions:
       - { Ref: StartWarLayerLambdaLayer }
     events:
       - http:
-          path: /{proxy+}
-          method: any
+          path: /film
+          method: get
           cors:
             origin: "*"
             headers: # <-- Specify allowed headers
@@ -62,4 +79,6 @@ functions:
             type: aws_iam
 
 plugins:
+  - serverless-auto-swagger
   - serverless-offline
+
