@@ -51,6 +51,22 @@ export class Film {
     );
   }
 
+  static fromPrimitive(plainDate: {
+    id: string;
+    titulo: string;
+    episodio: number;
+    apertura: string;
+    director: string;
+  }): Film {
+    return new Film(
+      new FilmId(plainDate.id),
+      new FilmTitle(plainDate.titulo),
+      new FilmEpisode(plainDate.episodio),
+      new FilmOpeningCrawl(plainDate.apertura),
+      new FilmDirector(plainDate.director),
+    );
+  }
+
   toPrimitive(): FilmPrimitive {
     return {
       id: this.id.value,

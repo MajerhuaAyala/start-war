@@ -6,7 +6,10 @@ import { FilmEpisode } from "../../domain/FilmEpisode";
 import { FilmOpeningCrawl } from "../../domain/FilmOpeningCrawl";
 import { FilmDirector } from "../../domain/FilmDirector";
 import { Either } from "../../../../shared/domain/either";
-import { ApiError } from "../../../../shared/domain/type-error";
+import {
+  ApiError,
+  BadRequestError,
+} from "../../../../shared/domain/type-error";
 
 export class FilmCreator {
   constructor(private readonly filmRepository: FilmRepository) {}
@@ -18,6 +21,16 @@ export class FilmCreator {
     apertura: string;
     director: string;
   }): Promise<Either<ApiError, Film>> {
+    const filmFound = await this.filmRepository.findById(new FilmId(params.id));
+
+    if (filmFound.isPresent()) {
+      return Either.left(
+        new BadRequestError(
+          `La película con el id: ${params.id} ya está registrada.`,
+        ),
+      );
+    }
+
     const newFilm = new Film(
       new FilmId(params.id),
       new FilmTitle(params.titulo),

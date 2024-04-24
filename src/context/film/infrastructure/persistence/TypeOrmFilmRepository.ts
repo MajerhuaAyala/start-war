@@ -9,6 +9,7 @@ import { FilmOpeningCrawl } from "../../domain/FilmOpeningCrawl";
 import { FilmDirector } from "../../domain/FilmDirector";
 import { PaginateDto } from "../../domain/adapter/paginate.dto";
 import { ResponsePaginateFilm } from "../../domain/adapter/responsePaginateFilm";
+import { Optional } from "../../../../shared/domain/optional";
 
 export class TypeOrmFilmRepository
   extends TypeOrmRepository<FilmEntity>
@@ -93,6 +94,25 @@ export class TypeOrmFilmRepository
 
     try {
       await (await this.repository(FilmEntity)).save(bodyToSave);
+    } catch (error) {
+      console.error(error);
+      throw new Error("Error en la base de datos");
+    }
+  }
+
+  async findById(id: FilmId): Promise<Optional<Film>> {
+    try {
+      const response = await (
+        await this.repository(FilmEntity)
+      ).findOne({
+        where: { id: id.value },
+      });
+
+      if (!response) {
+        return Optional.empty();
+      }
+
+      return Optional.of(Film.fromPrimitive(response));
     } catch (error) {
       console.error(error);
       throw new Error("Error en la base de datos");
