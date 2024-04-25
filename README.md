@@ -40,9 +40,72 @@ la base de datos y devuelve un listado de películas mapeadas al español.
 El servicio registra una película verificando que no exista otra con el mismo ID.
 
 3. Swagger
-   [AWS](https://mwxhja001b.execute-api.us-east-2.amazonaws.com/dev/swagger){:target="_blank"}
+   [Enlace a la documentación Swagger](https://mwxhja001b.execute-api.us-east-2.amazonaws.com/dev/swagger)
 
 ## Arquitectura
+
+1. La arquitectura utilizada fue la Arquitectura Hexagonal, también conocida como Arquitectura de Puertos y Adaptadores.
+
+├── context
+│   ├── film
+│   │   ├── application
+│   │   │   ├── create
+│   │   │   │   └── FilmCreator.ts
+│   │   │   └── get
+│   │   │       └── FilmFilter.ts
+│   │   ├── domain
+│   │   │   ├── adapter
+│   │   │   │   ├── paginate.dto.ts
+│   │   │   │   └── responsePaginateFilm.ts
+│   │   │   ├── FilmDirector.ts
+│   │   │   ├── FilmEpisode.ts
+│   │   │   ├── FilmExternalApiRepository.ts
+│   │   │   ├── FilmId.ts
+│   │   │   ├── FilmOpeningCrawl.ts
+│   │   │   ├── FilmRepository.ts
+│   │   │   ├── FilmTitle.ts
+│   │   │   └── Film.ts
+│   │   └── infrastructure
+│   │       ├── controller
+│   │       │   ├── CreateFilmController.ts
+│   │       │   └── FilterFilmController.ts
+│   │       ├── externalApi
+│   │       │   └── SwapiFilmRepository.ts
+│   │       ├── FilmRoutes.ts
+│   │       └── persistence
+│   │           ├── typeorm
+│   │           │   └── film.entity.ts
+│   │           └── TypeOrmFilmRepository.ts
+
+
+2. Para los tests se ha utilizado el patrón de Object Mother, generando datos aleatorios con Faker.
+
+test
+├── context
+│   └── film
+│       ├── application
+│       │   ├── FilmCreator.test.ts
+│       │   └── FilmFilter.test.ts
+│       ├── domain
+│       │   ├── FilmDirectorMother.ts
+│       │   ├── FilmEpisodeMother.ts
+│       │   ├── FilmIdMother.ts
+│       │   ├── FilmMother.ts
+│       │   ├── FilmOpeningCrawlMother.ts
+│       │   └── FilmTitleMother.ts
+│       ├── infrastructure
+│       │   ├── externalApi
+│       │   │   └── SwapiFilmRepository.test.ts
+│       │   └── persistence
+│       │       └── TypeOrmFilmRepository.test.ts
+│       └── __mocks__
+│           ├── FilmExternalRepositoryMock.ts
+│           └── FilmRepositoryMock.ts
+└── shared
+└── domain
+├── IntegerMother.ts
+├── MotherCreator.ts
+└── WordMother.ts
 
 ## Instalación.
 
