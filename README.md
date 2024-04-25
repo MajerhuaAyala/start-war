@@ -6,25 +6,6 @@ traducidos incluyen nombres de personajes, títulos de películas, nombres de pl
 
 Por el momento solo está disponible los atributos de películas.
 
-## Funcionamiento
-1. Listado de películas
-
-![listado](doc/images/listado.png)
-
-Servicio que busca coincidencias en el título de la película. En primer lugar, realiza una 
-consulta a la base de datos MySQL. Si la película buscada no existe, consulta la API de SWAPI 
-para recuperar los valores de la película. Luego, mapea los atributos al español, los guarda en 
-la base de datos y devuelve un listado de películas mapeadas al español.
-
-2. Registro de película
-
-![registro](doc/images/registro.png)
-
-El servicio registra una película verificando que no exista otra con el mismo ID.
-
-3. Swagger
-[AWS](https://mwxhja001b.execute-api.us-east-2.amazonaws.com/dev/swagger).
-
 ## Requerimientos.
 
 - [x] Mínimo 2 endpoints, GET para recuperar la información y POST para crear un elemento
@@ -42,6 +23,27 @@ El servicio registra una película verificando que no exista otra con el mismo I
 - AWS cli >= 2.15.40
 - TypeScript >= 5.4.2
 
+## Funcionamiento
+1. Listado de películas
+
+![listado](doc/images/listado.png)
+
+Servicio que busca coincidencias en el título de la película. En primer lugar, realiza una 
+consulta a la base de datos MySQL. Si la película buscada no existe, consulta la API de SWAPI 
+para recuperar los valores de la película. Luego, mapea los atributos al español, los guarda en 
+la base de datos y devuelve un listado de películas mapeadas al español.
+
+2. Registro de película
+
+![registro](doc/images/registro.png)
+
+El servicio registra una película verificando que no exista otra con el mismo ID.
+
+3. Swagger
+   [AWS](https://mwxhja001b.execute-api.us-east-2.amazonaws.com/dev/swagger){:target="_blank"}
+
+## Arquitectura
+
 ## Instalación.
 
 1. Clona este repositorio en tu máquina local:
@@ -57,7 +59,7 @@ npm i
 1. Cuenta de AWS: Esencial para el despliegue de la API. Si aún no tienes una, puedes crear una cuenta gratuita
    en [AWS](aws.amazon.com).
 2. Cambiar el perfil de AWS, en el archivo packge.json remplazar con su perfil 
-   ![perfil AWS](doc/images/perfil_AWS.png)
+   ![perfil AWS](doc/images/perfil_AWS.png){:target="_blank"}
 ## Primeros pasos.
 
 ### Crear un clouster de base de datos de prueba.

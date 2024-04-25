@@ -44,7 +44,7 @@ layers:
 custom:
   autoswagger:
     title: 'Api de Start War'
-    apiType: 'http'
+    apiType: 'https'
     generateSwaggerOnDeploy: true
     swaggerFiles: [ './doc/films.json' ]
     typefiles: [ "./doc/types/api-types.d.ts" ]
