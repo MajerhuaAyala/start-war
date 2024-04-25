@@ -46,6 +46,8 @@ El servicio registra una película verificando que no exista otra con el mismo I
 
 1. La arquitectura utilizada fue la Arquitectura Hexagonal, también conocida como Arquitectura de Puertos y Adaptadores.
 
+```
+
 ├── context
 │   ├── film
 │   │   ├── application
@@ -76,10 +78,11 @@ El servicio registra una película verificando que no exista otra con el mismo I
 │   │           ├── typeorm
 │   │           │   └── film.entity.ts
 │   │           └── TypeOrmFilmRepository.ts
-
+```
 
 2. Para los tests se ha utilizado el patrón de Object Mother, generando datos aleatorios con Faker.
 
+```
 test
 ├── context
 │   └── film
@@ -106,6 +109,7 @@ test
 ├── IntegerMother.ts
 ├── MotherCreator.ts
 └── WordMother.ts
+```
 
 ## Instalación.
 
