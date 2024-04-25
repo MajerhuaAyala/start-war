@@ -21,6 +21,7 @@ Por el momento solo está disponible los atributos de películas.
 - Node.js >= versión 18.X
 - Serverless Framework >= versión 3.38.0
 - AWS cli >= 2.15.40
+- TypeScript >= 5.4.2
 
 ## Instalación
 
@@ -35,7 +36,8 @@ cd start-war
 
 1. Cuenta de AWS: Esencial para el despliegue de la API. Si aún no tienes una, puedes crear una cuenta gratuita
    en [AWS](aws.amazon.com).
-
+2. Cambiar el perfil de AWS, en el archivo packge.json remplazar con su perfil 
+   ![perfil AWS](doc/images/perfil_AWS.png)
 ## Primeros pasos
 
 ### Crear un clouster de base de datos de prueba
@@ -54,4 +56,22 @@ Crea un cluster de base de datos MySQL local o en un servicio.
    /src/shared/infrastructure/persistence/typeorm/TypeOrmClientFactory.ts.
 2. Editar el campo synchronize cambiar a valor true
 
-![test](doc/images/syncrhonize.png)
+![syncrhonize](doc/images/syncrhonize.png)
+
+### Pruebas locales
+Si quiere hacer pruebas sin desplegar siga los siguientes pasos
+1. instale la extension ser serverless-auto-swagger y serverless-offline con los siguientes comandos
+
+```bash
+npm i -g serverless-offline serverless
+serverless plugin install -n serverless-auto-swagger --stage dev 
+serverless plugin install -n serverless-offline --stage dev 
+```
+2. Para levantar el servidos localmente ingrese el siguiente comando 
+
+```bash
+npm run build
+npm run start:local
+```
+3. Se desplegarán los endpoints disponibles. Para hacer las pruebas, ingresa al siguiente endpoint.
+![localhost](doc/images/localhost.png)
