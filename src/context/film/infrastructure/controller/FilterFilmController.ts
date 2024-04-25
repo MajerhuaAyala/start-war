@@ -37,13 +37,23 @@ export const filterFilmController = async (req: Request, res: Response) => {
           .build()
           .getResponse();
       },
-      (response) =>
+      (response) => {
+        const responseMapped = {
+          //TODO: create mapper
+          data: response.data.map((i) => i.toPrimitive()),
+          page: Number(response.page),
+          perPage: Number(response.perPage),
+          pages: Number(response.pages),
+          total: Number(response.total),
+        };
+
         ApiResponse.builder()
           .setStatusCode(STATUS_CODE.OK)
-          .setObjectBody(response)
+          .setObjectBody(responseMapped)
           .setResponseApi(res)
           .build()
-          .getResponse(),
+          .getResponse();
+      },
     );
   } catch (error) {
     console.error(`${filterFilmController.name}: `, error);
