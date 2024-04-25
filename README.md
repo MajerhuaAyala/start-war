@@ -1,6 +1,9 @@
 # Traductor de SWAPI
 
-Breve descripción o resumen del proyecto.
+La API proporciona endpoints que permiten acceder a los datos de SWAPI traducidos al español, lo que facilita su uso para usuarios de habla hispana. Los atributos 
+traducidos incluyen nombres de personajes, títulos de películas, nombres de planetas y más.
+
+Por el momento solo está disponible los atributos de películas.
 
 ## Requerimientos
 
@@ -14,17 +17,17 @@ Breve descripción o resumen del proyecto.
 
 ## Requisitos
 
-- Node.js >= versión X.X
-- Serverless Framework >= versión X.X
-- Otros requisitos (si los hay)
+- Node.js >= versión 18.X
+- Serverless Framework >= versión 3.38.0
+- AWS cli >= 2.15.40
 
 ## Instalación
 
 1. Clona este repositorio en tu máquina local:
 
 ```bash
-git clone <URL_del_repositorio>
-cd nombre_del_directorio
+git clone https://github.com/MajerhuaAyala/start-war.git
+cd start-war
 ```
 
 ![test](doc/images/test.png)
