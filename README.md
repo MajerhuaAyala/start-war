@@ -6,6 +6,14 @@ traducidos incluyen nombres de personajes, títulos de películas, nombres de pl
 
 Por el momento solo está disponible los atributos de películas.
 
+## Funcionamiento
+1. Listado de películas
+![listado](doc/images/listado.png)
+Servicio que busca coincidencias en el título de la película. En primer lugar, realiza una 
+consulta a la base de datos MySQL. Si la película buscada no existe, consulta la API de SWAPI 
+para recuperar los valores de la película. Luego, mapea los atributos al español, los guarda en 
+la base de datos y devuelve un listado de películas mapeadas al español.
+
 ## Requerimientos.
 
 - [x] Mínimo 2 endpoints, GET para recuperar la información y POST para crear un elemento

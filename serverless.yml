@@ -27,7 +27,7 @@ package:
     - src/**
     - Dockerfile
     - .tmp/**
-    - coverag/**
+    - coverage/**
 
 layers:
   StartWarLayer:
