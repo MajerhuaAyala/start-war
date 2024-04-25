@@ -3,7 +3,7 @@ import { InvalidArgumentError } from "../../../shared/domain/valueObject/Invalid
 
 export class FilmTitle extends StringValueObject {
   readonly value: string;
-  readonly formatTitle = /^[a-zA-Z0-9\- ]+$/;
+  readonly formatTitle = /^[a-zA-Z0-9\s\-:]+$/;
 
   constructor(value: string) {
     super(value, true, "titulo");

@@ -25,13 +25,14 @@ export const createFilmController = async (req: Request, res: Response) => {
           .build()
           .getResponse();
       },
-      (response) =>
+      (response) => {
         ApiResponse.builder()
           .setStatusCode(STATUS_CODE.OK)
-          .setObjectBody(response)
+          .setObjectBody(response.toPrimitive())
           .setResponseApi(res)
           .build()
-          .getResponse(),
+          .getResponse();
+      },
     );
   } catch (error) {
     console.error(`${createFilmController.name}: `, error);
