@@ -32,6 +32,16 @@ export class FilmRepositoryMock implements FilmRepository {
     this.createBulkMock(films)
   }
 
+  returnOnCreateBulk(films: Film[], page: number, perPage: number, total: number) {
+    this.responsePaginateFilm = {
+      data: films,
+      page,
+      pages: Math.ceil(total / perPage),
+      perPage,
+      total
+    }
+  }
+
   async filter(criteria: PaginateDto): Promise<ResponsePaginateFilm> {
     this.filterMock(criteria)
     return this.responsePaginateFilm
@@ -40,6 +50,16 @@ export class FilmRepositoryMock implements FilmRepository {
   async findById(id: FilmId): Promise<Optional<Film>> {
     this.findByIdMock(id)
     return this.optionaFilm
+  }
+
+  returnOnFilter(films: Film[], page: number, perPage: number, total: number) {
+    this.responsePaginateFilm = {
+      data: films,
+      page,
+      pages: Math.ceil(total / perPage),
+      perPage,
+      total
+    }
   }
 
   returnOnFindById(film: Film) {

@@ -32,24 +32,6 @@ describe("Crear nueva pelicula", () => {
         expect(response.getRight()).toMatchObject(newFilmRandom)
       })
     })
-    describe("La película ya está registrada", () => {
-      it("Debería devolver un error con el mensaje de La película con el id: 12345 ya está registrada.", async () => {
-        const newFilmRandom = FilmMother.random() // se crea un film con atributos random
-
-        filmRepository.returnOnFindById(newFilmRandom) // le doy la intrucción de que el método findById devuelva un film idéntico al newFilmRandom
-
-        const response = await filmCreator.run({
-          id: newFilmRandom.id.value,
-          apertura: newFilmRandom.apertura.value,
-          director: newFilmRandom.director.value,
-          episodio: newFilmRandom.episodio.value,
-          titulo: newFilmRandom.titulo.value
-        })
-
-        expect(response.getLeft()).toMatchObject(new BadRequestError(`La película con el id: ${newFilmRandom.id.value} ya está registrada.`))
-
-      })
-    })
 
     describe("El titulo de la pelula está es vacia", () => {
       it("Debería devolve una excepcion con el mensaje de Formato del campo titulo es invalida", async () => {
@@ -65,4 +47,24 @@ describe("Crear nueva pelicula", () => {
       })
     })
   })
+
+  describe("La película ya está registrada", () => {
+    it("Debería devolver un error con el mensaje de La película con el id: 12345 ya está registrada.", async () => {
+      const newFilmRandom = FilmMother.random() // se crea un film con atributos random
+
+      filmRepository.returnOnFindById(newFilmRandom) // le doy la intrucción de que el método findById devuelva un film idéntico al newFilmRandom
+
+      const response = await filmCreator.run({
+        id: newFilmRandom.id.value,
+        apertura: newFilmRandom.apertura.value,
+        director: newFilmRandom.director.value,
+        episodio: newFilmRandom.episodio.value,
+        titulo: newFilmRandom.titulo.value
+      })
+
+      expect(response.getLeft()).toMatchObject(new BadRequestError(`La película con el id: ${newFilmRandom.id.value} ya está registrada.`))
+
+    })
+  })
+
 })

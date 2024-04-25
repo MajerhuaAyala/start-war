@@ -2,9 +2,9 @@ import {FilmExternalApiRepository} from "../../../../src/context/film/domain/Fil
 import {FilmTitle} from "../../../../src/context/film/domain/FilmTitle";
 import {Film} from "../../../../src/context/film/domain/Film";
 
-export class ExternalFilmRepositoryMock implements FilmExternalApiRepository {
+export class FilmExternalRepositoryMock implements FilmExternalApiRepository {
   private readonly findByTitleMock: jest.Mock
-  private person: Film[] | []
+  private film: Film[] | []
 
   constructor() {
     this.findByTitleMock = jest.fn()
@@ -12,6 +12,10 @@ export class ExternalFilmRepositoryMock implements FilmExternalApiRepository {
 
   async findByTitle(name: FilmTitle): Promise<Film[] | []> {
     this.findByTitleMock(name)
-    return this.person
+    return this.film
+  }
+
+  returnOnFindByTitle(films: Film[]) {
+    this.film = films
   }
 }

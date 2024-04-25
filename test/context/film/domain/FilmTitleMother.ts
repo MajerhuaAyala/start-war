@@ -7,7 +7,7 @@ export class FilmTitleMother {
   }
 
   static random(): FilmTitle {
-    const randomTitle = MotherCreator.random().music.songName()
+    const randomTitle = MotherCreator.random().person.jobTitle()
     return this.create(randomTitle)
   }
 }
