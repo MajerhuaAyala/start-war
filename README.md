@@ -175,6 +175,12 @@ npm run test
 Es importante tener en cuenta que las pruebas de integración no fallarán si tienes una 
 conexión establecida a una base de datos y una URL válida de SWAPI.
 
+
+En ocasiones, los tests de integración pueden fallar debido a que el servidor de MySQL tarda en responder debido 
+a la latencia, o la API de SWAPI tarda en responder demasiado tiempo.
+
+![Resultado test](doc/images/result_test.png)
+
 ## Despliegue a AWS.
 
 1. Debe tener configurado su perfil de AWS
