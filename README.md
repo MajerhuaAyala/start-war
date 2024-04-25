@@ -190,7 +190,15 @@ a la latencia, o la API de SWAPI tarda en responder demasiado tiempo.
 ```bash
 npm run build
 ```
-4. Desplegar a AWS
+4. Descargar los paquetes en el Layer.
+
+Ve a la carpeta layers/nodejs y ejecuta el siguiente comando.
+
+```bash
+npm i
+```
+
+5. Desplegar a AWS
 
 ```bash
 npm run deploy:dev
