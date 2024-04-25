@@ -8,11 +8,22 @@ Por el momento solo está disponible los atributos de películas.
 
 ## Funcionamiento
 1. Listado de películas
+
 ![listado](doc/images/listado.png)
+
 Servicio que busca coincidencias en el título de la película. En primer lugar, realiza una 
 consulta a la base de datos MySQL. Si la película buscada no existe, consulta la API de SWAPI 
 para recuperar los valores de la película. Luego, mapea los atributos al español, los guarda en 
 la base de datos y devuelve un listado de películas mapeadas al español.
+
+2. Registro de película
+
+![registro](doc/images/registro.png)
+
+El servicio registra una película verificando que no exista otra con el mismo ID.
+
+3. Swagger
+[AWS](https://mwxhja001b.execute-api.us-east-2.amazonaws.com/dev/swagger).
 
 ## Requerimientos.
 
