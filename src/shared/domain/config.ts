@@ -7,5 +7,3 @@ export const DATABASE_NAME = String(process.env.DATABASE_NAME);
 export const ALLOW_WEB_ORIGINS = String(process.env.ALLOW_WEB_ORIGINS);
 
 export const SWAPI_BASE_URL = String(process.env.SWAPI_BASE_URL);
-
-

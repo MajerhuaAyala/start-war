@@ -1,5 +1,5 @@
-import {StringValueObject} from "../../../shared/domain/valueObject/StringValueObject";
-import {InvalidArgumentError} from "../../../shared/domain/valueObject/InvalidArgumentError";
+import { StringValueObject } from "../../../shared/domain/valueObject/StringValueObject";
+import { InvalidArgumentError } from "../../../shared/domain/valueObject/InvalidArgumentError";
 
 export class FilmTitle extends StringValueObject {
   readonly value: string;
@@ -8,14 +8,15 @@ export class FilmTitle extends StringValueObject {
   constructor(value: string) {
     super(value, true, "titulo");
     this.value = value;
-    this.ensureFormatTitle(value)
+    this.ensureFormatTitle(value);
   }
 
   private ensureFormatTitle(input: string) {
-    const response = this.formatTitle.test(input)
+    const response = this.formatTitle.test(input);
     if (!response) {
-      throw new InvalidArgumentError(`Formato del campo ${this.nameAttribute} es invalida`)
+      throw new InvalidArgumentError(
+        `Formato del campo ${this.nameAttribute} es invalida`,
+      );
     }
   }
-
 }
