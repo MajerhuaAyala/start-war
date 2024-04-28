@@ -5,7 +5,7 @@
     "build": "tsc",
     "start:local": "AWS_PROFILE=majerhua serverless offline start --stage dev --region us-east-2",
     "deploy:dev": "AWS_PROFILE=majerhua serverless deploy --stage dev --region us-east-2",
-    "docs": "node doc/add-stage-to-openapi.js dev",
+    "docs": "serverless openapi generate -o doc/openapi.json -f json -a 3.0.3 -p doc/postman.json --stage dev --region us-east-2 && node doc/add-stage-to-openapi.js",
     "test": "jest --runInBand --coverage"
   },
   "keywords": [],
@@ -40,6 +40,7 @@
     "jest-junit": "^16.0.0",
     "prettier": "^3.2.5",
     "serverless-offline": "^13.3.4",
+    "serverless-openapi-documenter": "^0.0.95",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.2"
   }
