@@ -1,0 +1,37 @@
+{
+  "description": "Successful operation",
+  "title": "Respuesta de paginado",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "uniqueItems": true,
+      "example": "123e4567-e89b-12d3-a456-426614174000"
+    },
+    "titulo": {
+      "type": "string",
+      "example": "Star Wars: Episodio IV - Una nueva esperanza"
+    },
+    "episodio": {
+      "type": "number",
+      "example": 4
+    },
+    "apertura": {
+      "type": "string",
+      "example": "Hace mucho tiempo en una galaxia muy, muy lejana..."
+    },
+    "director": {
+      "type": "string",
+      "example": "George Lucas"
+    },
+    "creado": {
+      "type": "string",
+      "example": "2024-04-28T18:22:17.479Z"
+    },
+    "editado": {
+      "type": "string",
+      "example": "2024-04-28T18:22:17.479Z"
+    }
+  }
+}

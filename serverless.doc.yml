@@ -33,6 +33,34 @@ endpoints:
         responseModels:
           application/json: ErrorResponse
 
+  create:
+    summary: Paginar películas
+    description: Página un listado de películas
+
+    requestBody:
+      description: descripcion generica
+      required: true
+
+    requestModels:
+      application/json: ResponseCreate
+
+    methodResponses:
+      - statusCode: 200
+        responseBody:
+          description: Listado de películas
+        responseModels:
+          application/json: getDocumentResponse
+      - statusCode: 500
+        responseBody:
+          description: Error no contemplado
+        responseModels:
+          application/json: ErrorResponse
+      - statusCode: 404
+        responseBody:
+          description: Error contemplado
+        responseModels:
+          application/json: ErrorResponse
+
 documentation:
   models:
     - name: getDocumentResponse
@@ -44,4 +72,9 @@ documentation:
       description: Respuesta de errores
       contentType: application/json
       schema: ${file(doc/models/ErrorResponse.json)}
+
+    - name: ResponseCreate
+      description: Respuesta de errores
+      contentType: application/json
+      schema: ${file(doc/models/Film.json)}
 

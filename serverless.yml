@@ -79,7 +79,7 @@ functions:
       - http:
           path: /films/create
           method: post
-          documentation: ${file(serverless.doc.yml):endpoints.paginate}
+          documentation: ${file(serverless.doc.yml):endpoints.create}
           cors:
             origin: "*"
             headers: # <-- Specify allowed headers
