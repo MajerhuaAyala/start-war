@@ -38,7 +38,7 @@ endpoints:
     description: Página un listado de películas
 
     requestBody:
-      description: descripcion generica
+      description: Objeto película que será creado
       required: true
 
     requestModels:
@@ -47,9 +47,9 @@ endpoints:
     methodResponses:
       - statusCode: 200
         responseBody:
-          description: Listado de películas
+          description: Película creada
         responseModels:
-          application/json: getDocumentResponse
+          application/json: ResponseCreate
       - statusCode: 500
         responseBody:
           description: Error no contemplado

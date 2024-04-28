@@ -1,0 +1,16 @@
+{
+  "description": "Respuesta de error",
+  "title": "Formato de respuesta de error",
+  "type": "object",
+  "properties": {
+    "errors": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "La película con el id: 8e3c93e8-7ee6-4b43-8aed-6a72f22e3f58 ya está registrada."
+        }
+      }
+    }
+  }
+}
