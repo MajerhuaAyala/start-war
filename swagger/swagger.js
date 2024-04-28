@@ -79,13 +79,16 @@
             "description": "Objeto de Pelílula que se debe añadir",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Film"
+              "$ref": "#/definitions/film"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "La pelicula ha sido creado"
+            "description": "La pelicula ha sido creado",
+            "schema": {
+              "$ref": "#/definitions/film"
+            }
           }
         }
       }
