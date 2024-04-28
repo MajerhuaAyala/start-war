@@ -39,9 +39,30 @@
           "200": {
             "description": "Successful operation",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Film"
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "page": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "perPage": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "pages": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/film"
+                  }
+                }
               }
             }
           }
@@ -97,7 +118,7 @@
     }
   },
   "definitions": {
-    "Film": {
+    "film": {
       "type": "object",
       "properties": {
         "id": {
