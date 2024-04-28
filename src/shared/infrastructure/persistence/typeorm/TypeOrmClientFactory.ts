@@ -10,12 +10,11 @@ export class TypeOrmClientFactory {
       username: config.username,
       password: config.password,
       database: config.database,
-      // @ts-ignore
       entities: [
         __dirname +
           "/../../../../context/**/infrastructure/persistence/typeorm/*{.js,.ts}",
       ],
-      synchronize: true,
+      synchronize: false,
       logging: false,
     });
     return connection.initialize();
