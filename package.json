@@ -5,7 +5,7 @@
     "build": "tsc",
     "start:local": "AWS_PROFILE=majerhua serverless offline start --stage dev --region us-east-2",
     "deploy:dev": "AWS_PROFILE=majerhua serverless deploy --stage dev --region us-east-2",
-    "docs": "serverless openapi generate -o doc/openapi.json -f json -a 3.0.3 -p doc/postman.json --stage dev --region us-east-2",
+    "docs": "serverless openapi generate -o doc/openapi.json -f json -a 3.0.3 -p doc/postman.json --stage dev --region us-east-2 && node doc/add-stage-to-openapi.js",
     "test": "jest --runInBand --coverage"
   },
   "keywords": [],

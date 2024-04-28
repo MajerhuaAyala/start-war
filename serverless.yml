@@ -47,8 +47,8 @@ custom:
   documentation: ${file(serverless.doc.yml):documentation}
 
 functions:
-  main:
-    handler: dist/src/shared/infrastructure/lambda/main.handler
+  paginate:
+    handler: dist/src/shared/infrastructure/lambda/paginate.handler
     timeout: 30
     memorySize: 256
     architecture: arm64
@@ -67,6 +67,29 @@ functions:
               - Authorization
               - X-Amz-Security-Token
             allowCredentials: false
+
+  create:
+    handler: dist/src/shared/infrastructure/lambda/create.handler
+    timeout: 30
+    memorySize: 256
+    architecture: arm64
+    layers:
+      - { Ref: StartWarLayerLambdaLayer }
+    events:
+      - http:
+          path: /films/create
+          method: post
+          documentation: ${file(serverless.doc.yml):endpoints.paginate}
+          cors:
+            origin: "*"
+            headers: # <-- Specify allowed headers
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Amz-Security-Token
+            allowCredentials: false
+
+
   swagger:
     handler: dist/src/shared/infrastructure/lambda/swagger.handler
     timeout: 30

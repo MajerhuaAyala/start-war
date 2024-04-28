@@ -26,12 +26,12 @@ endpoints:
         responseBody:
           description: Error no contemplado
         responseModels:
-          application/json: getDocumentResponse
+          application/json: ErrorResponse
       - statusCode: 404
         responseBody:
           description: Error contemplado
         responseModels:
-          application/json: getDocumentResponse
+          application/json: ErrorResponse
 
 documentation:
   models:
@@ -39,3 +39,9 @@ documentation:
       description: Respuesta de paginado de películas
       contentType: application/json
       schema: ${file(doc/models/GetDocumentResponse.json)}
+
+    - name: ErrorResponse
+      description: Respuesta de errores
+      contentType: application/json
+      schema: ${file(doc/models/ErrorResponse.json)}
+
