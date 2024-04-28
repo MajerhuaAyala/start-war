@@ -40,12 +40,6 @@ layers:
       exclude:
         - "!nodejs/node_modules/**"
 
-
-custom:
-  title: Start War API
-  description: API para listar películas de Star Wars con nombres de atributos traducidos al español
-  documentation: ${file(serverless.doc.yml):documentation}
-
 functions:
   paginate:
     handler: dist/src/shared/infrastructure/lambda/paginate.handler
@@ -58,7 +52,6 @@ functions:
       - http:
           path: /films/paginate
           method: get
-          documentation: ${file(serverless.doc.yml):endpoints.paginate}
           cors:
             origin: "*"
             headers: # <-- Specify allowed headers
@@ -79,7 +72,6 @@ functions:
       - http:
           path: /films/create
           method: post
-          documentation: ${file(serverless.doc.yml):endpoints.paginate}
           cors:
             origin: "*"
             headers: # <-- Specify allowed headers
@@ -103,6 +95,5 @@ functions:
           path: /swagger.json
           method: get
 plugins:
-  - serverless-openapi-documenter
   - serverless-offline
 

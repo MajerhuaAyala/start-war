@@ -6,7 +6,11 @@ const stage = process.argv[2] || "dev";
 const paths = openapiSpec.paths;
 const updatedPaths = {};
 for (const path in paths) {
-  updatedPaths[`/${stage}` + path] = paths[path];
+  if (!path.includes(stage)) {
+    updatedPaths[`/${stage}` + path] = paths[path];
+  } else {
+    updatedPaths[path] = paths[path];
+  }
 }
 
 openapiSpec.paths = updatedPaths
