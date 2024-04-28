@@ -42,20 +42,9 @@ layers:
 
 
 custom:
-  autoswagger:
-    title: 'Api de Start War'
-    apiType: 'http'
-    generateSwaggerOnDeploy: true
-    swaggerFiles: [ './doc/films.json' ]
-    typefiles: [ "./doc/types/api-types.d.ts" ]
-    swaggerPath: 'swagger'
-    #apiKeyHeaders: ['Authorization']
-    useStage: false
-    basePath: '/dev'
-    #host: 'localhost:3000/dev'
-    schemes: [ 'http', 'https' ]
-    excludeStages: [ 'production' ]
-    useRedirectUI: false
+  title: Start War API
+  description: API para listar películas de Star Wars con nombres de atributos traducidos al español
+  documentation: ${file(serverless.doc.yml):documentation}
 
 functions:
   main:
@@ -67,8 +56,9 @@ functions:
       - { Ref: StartWarLayerLambdaLayer }
     events:
       - http:
-          path: /{proxy+}
-          method: any
+          path: /films/paginate
+          method: get
+          documentation: ${file(serverless.doc.yml):endpoints.paginate}
           cors:
             origin: "*"
             headers: # <-- Specify allowed headers
@@ -77,8 +67,19 @@ functions:
               - Authorization
               - X-Amz-Security-Token
             allowCredentials: false
-
+  swagger:
+    handler: dist/src/shared/infrastructure/lambda/swagger.handler
+    timeout: 30
+    memorySize: 256
+    architecture: arm64
+    events:
+      - http:
+          path: /swagger
+          method: get
+      - http:
+          path: /swagger.json
+          method: get
 plugins:
-  - serverless-auto-swagger
+  - serverless-openapi-documenter
   - serverless-offline
 

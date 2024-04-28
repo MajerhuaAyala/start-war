@@ -1,0 +1,72 @@
+{
+  "description": "Successful operation",
+  "title": "Respuesta de paginado",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "integer",
+      "example": 1
+    },
+    "page": {
+      "type": "integer",
+      "example": 1
+    },
+    "perPage": {
+      "type": "integer",
+      "example": 1
+    },
+    "pages": {
+      "type": "integer",
+      "example": 1
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/film"
+      }
+    }
+  },
+  "definitions": {
+    "film": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "uniqueItems": true,
+          "example": "123e4567-e89b-12d3-a456-426614174000"
+        },
+        "titulo": {
+          "type": "string",
+          "example": "Star Wars: Episodio IV - Una nueva esperanza"
+        },
+        "episodio": {
+          "type": "number",
+          "example": 4
+        },
+        "apertura": {
+          "type": "string",
+          "example": "Hace mucho tiempo en una galaxia muy, muy lejana..."
+        },
+        "director": {
+          "type": "string",
+          "example": "George Lucas"
+        },
+        "creado": {
+          "type": "string",
+          "example": "2024-04-28T18:22:17.479Z"
+        },
+        "editado": {
+          "type": "string",
+          "example": "2024-04-28T18:22:17.479Z"
+        }
+      },
+      "required": [
+        "id",
+        "titulo",
+        "episodio",
+        "director"
+      ]
+    }
+  }
+}

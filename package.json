@@ -5,7 +5,7 @@
     "build": "tsc",
     "start:local": "AWS_PROFILE=majerhua serverless offline start --stage dev --region us-east-2",
     "deploy:dev": "AWS_PROFILE=majerhua serverless deploy --stage dev --region us-east-2",
-    "docs": "sls generate-swagger --stage dev --region us-east-2",
+    "docs": "serverless openapi generate -o doc/openapi.json -f json -a 3.0.3 -p doc/postman.json --stage dev --region us-east-2",
     "test": "jest --runInBand --coverage"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "lambda-api": "^1.0.3",
     "mysql2": "^3.9.7",
     "source-map-support": "^0.5.21",
+    "swagger-ui-dist": "^5.17.2",
     "typeorm": "^0.3.20",
     "uuid": "^9.0.1"
   },
@@ -32,6 +33,7 @@
     "@types/jest": "^29.5.2",
     "@types/node": "^20.11.25",
     "@types/source-map-support": "^0.5.10",
+    "@types/swagger-ui-dist": "^3.30.4",
     "@types/uuid": "^9.0.8",
     "eslint-plugin-jest": "^27.2.1",
     "jest": "^29.5.0",
@@ -39,6 +41,8 @@
     "prettier": "^3.2.5",
     "serverless-auto-swagger": "^2.12.0",
     "serverless-offline": "^13.3.4",
+    "serverless-openapi-documentation": "^0.4.0",
+    "serverless-openapi-documenter": "^0.0.95",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.2"
   }
