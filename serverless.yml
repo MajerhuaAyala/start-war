@@ -28,6 +28,11 @@ package:
     - Dockerfile
     - .tmp/**
     - coverage/**
+    - doc/**
+    - example.env.json
+    - jest.config.js
+    - serverless.doc.yml
+    - tsconfig.json
 
 layers:
   StartWarLayer:

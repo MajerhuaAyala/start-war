@@ -1,5 +1,7 @@
 # Traductor de SWAPI
 
+https://www.datadoghq.com/blog/aws-serverless-application-design/#aggregator-pattern
+
 La API proporciona endpoints que permiten acceder a los datos de SWAPI traducidos al español, lo que facilita su uso
 para usuarios de habla hispana. Los atributos
 traducidos incluyen nombres de personajes, títulos de películas, nombres de planetas y más.
