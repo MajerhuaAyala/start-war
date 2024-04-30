@@ -12,7 +12,7 @@ import { SwapiConfigFactory } from "../../../shared/infrastructure/externalApi/S
 
 export const filterFilmController = async (req: Request, res: Response) => {
   try {
-    const { page, perPage, query } = req.query as PaginateDto;
+    const { page = 1, perPage = 10, query } = req.query as PaginateDto;
 
     const filmRepository = new TypeOrmFilmRepository(
       TypeOrmClientFactory.createClient(TypeOrmConfigFactory.createConfig()),
